@@ -16,7 +16,7 @@ public class Process {
     If you want to find 5-minute duration historical stock prices, type in category to be "historical-chart/5min".
     To check multiple companies, use comma to separate them in companySymbol, example: "MSFT,AAPL,GOOG"/
      */
-    public void getInfo(String companySymbol, String category) throws IOException, InterruptedException {
+    public String getInfo(String companySymbol, String category) throws IOException, InterruptedException {
 
         URL url = new URL("https://financialmodelingprep.com/api/v3/"+category+"/"+companySymbol);
         URLConnection con = url.openConnection();
@@ -24,7 +24,8 @@ public class Process {
         String encoding = con.getContentEncoding();
         encoding = encoding == null ? "UTF-8" : encoding;
         String body = IOUtils.toString(in, encoding);
-        System.out.print(body);
+     //   System.out.print(body);
+        return body;
     }
 
 
