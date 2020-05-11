@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -9,13 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Collection;
 
-import org.apache.commons.io.input.ReaderInputStream;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.apache.commons.io.IOUtils;
 
 //this class gets the data from url and puts ticker and stock price into database
 public class Data {
@@ -34,13 +30,12 @@ public class Data {
         String encoding = con.getContentEncoding();
         encoding = encoding == null ? "UTF-8" : encoding;
         JSONArray body = (JSONArray) parser.parse(new InputStreamReader(in));
-        JSONObject obj = (JSONObject)body.get(0);
-
         sql = "INSERT INTO PALL(Time, Price) VALUES(?,?)";
 
         try (Connection conn = db.getConnection()) {
             //depends on how many points  we want to plot on graph
             for (int i = 0; i < 30; ++i) {
+                JSONObject obj = (JSONObject)body.get(i);
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, obj.get("date").toString());
                 pstmt.setDouble(2, (double) obj.get("open"));
@@ -77,5 +72,4 @@ public class Data {
     public boolean inDatabase() {
         return false;
     }
-    
 }
