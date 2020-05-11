@@ -1,30 +1,18 @@
-package sample;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.stage.Stage;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-import java.io.IOException;
 
 /*
 This is a class displaying the real time data on a GUI platform.
  */
 public class Main extends Application {
+    static Data data = new Data();
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        data.insertRealTimeData("GOOGL");
+        //data.insertHistoricalData("GOOGL");
         launch(args);
     }
 

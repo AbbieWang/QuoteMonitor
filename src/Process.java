@@ -1,5 +1,3 @@
-package com.company;
-
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -30,8 +28,7 @@ public class Process {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-    Process data = new Process();
-    data.getInfo("MSFT,AAPL,GOOG","historical-chart/5min");
+
     }
 
 }
