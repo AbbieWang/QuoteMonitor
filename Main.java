@@ -4,17 +4,18 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-import java.io.IOException;
+import javax.json.JsonObject;
+import javax.json.JsonArray;
+import java.util.ArrayList;
 
 /*
 This is a class displaying the real time data on a GUI platform.
@@ -58,62 +59,87 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Quote Monitor");
 
-        Process data = new Process();
+        Data data = new Data();
 
         //Get the price and handle button events for Microsoft
-        String displayMSFT = data.getInfo("MSFT", "stock/real-time-price");
-        labelMSFT = new Label(displayMSFT);
+        Double displayMSFT = data.getRealTimeData("MSFT");
+        labelMSFT = new Label(displayMSFT.toString());
         bMSFT = new Button();
         bMSFT.setText("Microsoft");
         bMSFT.setOnAction(e -> System.out.println(labelMSFT));
 
         //Get the price and handle button events for Apple
-        String displayAAPL = data.getInfo("AAPL", "stock/real-time-price");
-        labelAAPL = new Label(displayAAPL);
+        Double displayAAPL = data.getRealTimeData("AAPL");
+        labelAAPL = new Label(displayAAPL.toString());
         bAAPL = new Button();
         bAAPL.setText("Apple");
         bAAPL.setOnAction(e -> System.out.println(labelAAPL));
 
         //Get the price and handle button events for Amazon
-        String displayAMZN = data.getInfo("AMZN", "stock/real-time-price");
-        labelAMZN = new Label(displayAMZN);
+        Double displayAMZN = data.getRealTimeData("AMZN");
+        labelAMZN = new Label(displayAMZN.toString());
         bAMZN = new Button();
         bAMZN.setText("Amazon");
         bAMZN.setOnAction(e -> System.out.println(labelAMZN));
 
         //Get the price and handle button events for Facebook
-        String displayFB = data.getInfo("FB", "stock/real-time-price");
-        labelFB = new Label(displayFB);
+        Double displayFB =  data.getRealTimeData("FB");
+        labelFB = new Label(displayFB.toString());
         bFB = new Button();
         bFB.setText("Facebook");
         bFB.setOnAction(e -> System.out.println(labelFB));
 
         //Get the price and handle button events for Alphabet Class A (GOOGL)
-        String displayGOOGL = data.getInfo("GOOGL", "stock/real-time-price");
-        labelGOOGL = new Label(displayGOOGL);
+        Double displayGOOGL = data.getRealTimeData("GOOGL");
+        labelGOOGL = new Label(displayGOOGL.toString());
         bGOOGL = new Button();
         bGOOGL.setText("Alphabet Class A");
         bGOOGL.setOnAction(e -> System.out.println(labelGOOGL));
-
+/*
         //Creating the Scatter chart
         NumberAxis xAxis = new NumberAxis(0, 12, 3);
         xAxis.setLabel("Time");
         NumberAxis yAxis = new NumberAxis(0, 16, 4);
         yAxis.setLabel("Price");
         ScatterChart<String, Number> scatterChart = new ScatterChart(xAxis, yAxis);
+*/
+        primaryStage.setTitle("Line Chart Sample");
+        //defining the axes
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("5-min time interval over the last hour");
+        //creating the chart
+        final LineChart<Number,Number> lineChart =
+                new LineChart<Number,Number>(xAxis,yAxis);
 
-        String chartGOOGL = data.getInfo("GOOGL", "historical-chart/5min");
+        lineChart.setTitle("Last-Hour Stock Prices");
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("MSFT");
+
+        //Import the historical price data
+        Data hist = new Data();
+        double [] y_axis = hist.getHistoricalData("MSFT");
+        String[] x_axis = hist.getTimeInterval("MSFT");
+
+        //Add to the array
+        for(int i = 0;i<9;i++){
+            series.getData().add(new XYChart.Data(i,y_axis[i]));
+        }
+        lineChart.getData().add(series);
 
         //Create a flow pane to display each button
         FlowPane flow = new FlowPane(Orientation.VERTICAL,5,5);
         //to add space around the pane
         flow.setPadding(new Insets(50));
         flow.getChildren().addAll(bMSFT,bAAPL,bAMZN,bFB,bGOOGL);
-        flow.getChildren().add(scatterChart);
+        flow.getChildren().add(lineChart);
         Scene scene = new Scene(flow, 1000, 800);
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
     }
 
 }
