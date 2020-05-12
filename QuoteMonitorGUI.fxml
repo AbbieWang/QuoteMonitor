@@ -334,7 +334,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="balance" alignment="CENTER" disable="true" layoutX="103.0" layoutY="44.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="10000.00">
+                  <TextField fx:id="balance" alignment="CENTER" disable="true" layoutX="103.0" layoutY="44.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="10000.0">
                      <font>
                         <Font size="16.0" />
                      </font>
