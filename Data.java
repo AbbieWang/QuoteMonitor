@@ -17,13 +17,10 @@ public class Data {
     public static double[] getHistoricalData(String company) throws Exception {
         double numbers[] = new double[12];
         JSONParser parser = new JSONParser();
-        String sql;
-        URL url = new URL("https://financialmodelingprep.com/api/v3/historical-chart/5min/" + company);
+        URL url = new URL("https://financialmodelingprep.com/api/v3/historical-chart/1hour/" + company);
 
         URLConnection con = url.openConnection();
         InputStream in = con.getInputStream();
-        String encoding = con.getContentEncoding();
-        encoding = encoding == null ? "UTF-8" : encoding;
         JSONArray body = (JSONArray) parser.parse(new InputStreamReader(in));
 
         for (int i = 0; i < 12; i++) {
@@ -39,9 +36,18 @@ public class Data {
         URL url = new URL("https://financialmodelingprep.com/api/v3/quote/" + company);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         JSONArray body = (JSONArray) parser.parse(reader);
-        JSONObject obj = (JSONObject)body.get(0);
+        JSONObject obj = (JSONObject) body.get(0);
         return (double)obj.get("price");
     }
-    
+
+    public static double getChangesPercentage(String company) throws Exception {
+        JSONParser parser = new JSONParser();
+        URL url = new URL("https://financialmodelingprep.com/api/v3/quote/" + company);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
+        JSONArray body = (JSONArray) parser.parse(reader);
+        JSONObject obj = (JSONObject) body.get(0);
+        return (double)obj.get("changesPercentage");
+    }
+
 
 }

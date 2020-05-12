@@ -20,7 +20,7 @@
                      <children>
                         <Accordion prefHeight="205.0" prefWidth="336.0">
                           <panes>
-                            <TitledPane fx:id="stock1" animated="false" text="Stock1 ($TCKR)                            +2.33%">
+                            <TitledPane fx:id="stock1" animated="false" onMouseClicked="#getGoogPrice" text="Stock1 ($TCKR)                            +2.33%">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -59,7 +59,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p1" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
