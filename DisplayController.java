@@ -8,41 +8,62 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javafx.util.converter.DoubleStringConverter;
 
+import java.awt.*;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class DisplayController implements Initializable {
+public class DisplayController extends TimerTask implements Initializable {
 
     @FXML
     private TitledPane stock1,stock2,stock3,stock4,stock5;
     @FXML
-    private TextField p1,p2,p3,p4,p5;
+    private TextField p1,p2,p3,p4,p5;//price fields
     @FXML
+    private TextField s1,s2,s3,s4,s5;//shares fields
+    @FXML
+    private TextField a1,a2,a3,a4,a5;//amount fields
 
+    @FXML
+    private TextField portfolioVal, balance;
+
+    @FXML
+    Text message;
+
+    @FXML
+    BorderPane statusMessage;
+
+    @FXML
     private Label dateText;
     @FXML
     private Label timeText;
 
     Data data = new Data();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         date();
         time();
         try {
-            updateStock1("Alphabet Inc.", "GOOGL");
-            updateStock2("Apple Inc.        ", "AAPL");
-            updateStock3("Amazon          ", "AMZN");
-            updateStock4("Microsoft         ", "MSFT");
-            updateStock5("Tesla                 ", "TSLA");
+              updateApp();
+//            updateStock1("Alphabet Inc.", "GOOGL");
+//            updateStock2("Apple Inc.        ", "AAPL");
+//            updateStock3("Amazon          ", "AMZN");
+//            updateStock4("Microsoft         ", "MSFT");
+//            updateStock5("Tesla                 ", "TSLA");
+//            fetchPortfolio();
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,5 +149,158 @@ public class DisplayController implements Initializable {
         stock5.setText(stockName + " ($"+ ticker +")                 " + change + "%");
     }
 
+    //This method will have to change later to get portfolio value out of database to keep track
+    @FXML
+    public void fetchPortfolio() {
+        //PortfolioController portfolio = new PortfolioController();
+        double val = calculatePortfolio();
+        //CHANGE
+        String pVal = val + "";
+        portfolioVal.setText(pVal);
+        //balance.setText("10000");
 
+    }
+
+    @FXML
+    public double calculatePortfolio() {
+        DoubleStringConverter convert = new DoubleStringConverter();
+        //calculate the portfolio value based on # of shares * price per share, plus balance
+        double total = (convert.fromString(s1.getText()) * convert.fromString(p1.getText()))
+                + (convert.fromString(s2.getText()) * convert.fromString(p2.getText()))
+                + (convert.fromString(s3.getText()) * convert.fromString(p3.getText()))
+                + (convert.fromString(s4.getText()) * convert.fromString(p4.getText()))
+                + (convert.fromString(s5.getText()) * convert.fromString(p5.getText()));
+
+        total = total + convert.fromString(balance.getText());
+        return total;
+    }
+
+    public void updateApp() throws Exception {
+        updateStock1("Alphabet Inc.", "GOOGL");
+        updateStock2("Apple Inc.        ", "AAPL");
+        updateStock3("Amazon          ", "AMZN");
+        updateStock4("Microsoft         ", "MSFT");
+        updateStock5("Tesla                 ", "TSLA");
+        fetchPortfolio();
+    }
+    //missing case for input not being a valid number
+    public void purchaseStocks1() throws Exception {
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+
+        if (convert.fromString(a1.getText()) * convert.fromString(p1.getText()) > money) {
+            statusMessage.setOpacity(1.0);
+            message.setText("Insufficient Funds!");
+            message.setStyle("-fx-text-fill: red;");
+//            Timer timer = new Timer();
+//            timer.schedule(new DisplayController(), 3000);
+            return;
+        }
+        money = money - (convert.fromString(a1.getText()) * convert.fromString(p1.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a1.getText()) + convert.fromString(s1.getText());
+        s1.setText(convert.toString(tmp));
+        a1.setText("0");
+    }
+
+    public void purchaseStocks2() throws Exception {
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+
+        if (convert.fromString(a2.getText()) * convert.fromString(p2.getText()) > money) {
+            statusMessage.setOpacity(1.0);
+            message.setText("Insufficient Funds!");
+            message.setStyle("-fx-text-fill: red;");
+//            Timer timer = new Timer();
+//            timer.schedule(new DisplayController(), 3000);
+            return;
+        }
+        money = money - (convert.fromString(a2.getText()) * convert.fromString(p2.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a2.getText()) + convert.fromString(s2.getText());
+        s2.setText(convert.toString(tmp));
+        a2.setText("0");
+    }
+    public void purchaseStocks3() throws Exception {
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+
+        if (convert.fromString(a3.getText()) * convert.fromString(p3.getText()) > money) {
+            statusMessage.setOpacity(1.0);
+            message.setText("Insufficient Funds!");
+            message.setStyle("-fx-text-fill: red;");
+//            Timer timer = new Timer();
+//            timer.schedule(new DisplayController(), 3000);
+            return;
+        }
+        money = money - (convert.fromString(a3.getText()) * convert.fromString(p3.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a3.getText()) + convert.fromString(s3.getText());
+        s3.setText(convert.toString(tmp));
+        a3.setText("0");
+    }
+    public void purchaseStocks4() throws Exception {
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+
+        if (convert.fromString(a4.getText()) * convert.fromString(p4.getText()) > money) {
+            statusMessage.setOpacity(1.0);
+            message.setText("Insufficient Funds!");
+            message.setStyle("-fx-text-fill: red;");
+//            Timer timer = new Timer();
+//            timer.schedule(new DisplayController(), 3000);
+            return;
+        }
+        money = money - (convert.fromString(a4.getText()) * convert.fromString(p4.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a4.getText()) + convert.fromString(s4.getText());
+        s4.setText(convert.toString(tmp));
+        a4.setText("0");
+    }
+    public void purchaseStocks5() throws Exception {
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+
+        if (convert.fromString(a5.getText()) * convert.fromString(p5.getText()) > money) {
+            statusMessage.setOpacity(1.0);
+            message.setText("Insufficient Funds!");
+            message.setStyle("-fx-text-fill: red;");
+//            Timer timer = new Timer();
+//            timer.schedule(new DisplayController(), 3000);
+            return;
+        }
+        money = money - (convert.fromString(a5.getText()) * convert.fromString(p5.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a5.getText()) + convert.fromString(s5.getText());
+        s5.setText(convert.toString(tmp));
+        a5.setText("0");
+    }
+
+
+
+    @Override
+    @FXML
+    public void run() {
+        statusMessage.setOpacity(0);
+    }
 }

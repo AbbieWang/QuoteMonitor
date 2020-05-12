@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="548.0" prefWidth="797.0" style="-fx-background-color: #1B1B1B#1B1B1B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayController">
   <children>
@@ -31,7 +32,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks1" prefHeight="23.0" prefWidth="41.0" text="Buy">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -51,12 +52,12 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="s1" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
                                           </TextField>
-                                          <TextField layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="a1" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -66,7 +67,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="p1" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p1" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -82,7 +83,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks2" prefHeight="23.0" prefWidth="41.0" text="Buy">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -102,12 +103,12 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="s2" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
                                           </TextField>
-                                          <TextField layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="a2" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -117,7 +118,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="p2" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p2" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -133,7 +134,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks3" prefHeight="23.0" prefWidth="41.0" text="Buy">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -153,12 +154,12 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="s3" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
                                           </TextField>
-                                          <TextField layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="a3" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -168,7 +169,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="p3" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p3" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -184,7 +185,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks4" prefHeight="23.0" prefWidth="41.0" text="Buy">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -204,12 +205,12 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="s4" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
                                           </TextField>
-                                          <TextField layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="a4" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -219,7 +220,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="p4" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p4" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -235,7 +236,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks5" prefHeight="23.0" prefWidth="41.0" text="Buy">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -255,12 +256,12 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="s5" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
                                           </TextField>
-                                          <TextField layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="00">
+                                          <TextField fx:id="a5" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -270,7 +271,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="p5" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" promptText="0">
+                                          <TextField fx:id="p5" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -318,7 +319,7 @@
             </Label>
             <AnchorPane layoutX="1.0" layoutY="127.0" prefHeight="118.0" prefWidth="378.0" style="-fx-background-color: #1b1b1b;">
                <children>
-                  <TextField alignment="CENTER" disable="true" layoutX="103.0" layoutY="9.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="10,000.00">
+                  <TextField fx:id="portfolioVal" alignment="CENTER" disable="true" layoutX="103.0" layoutY="9.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="0.00">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -333,33 +334,38 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" disable="true" layoutX="103.0" layoutY="44.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="500.00">
+                  <TextField fx:id="balance" alignment="CENTER" disable="true" layoutX="103.0" layoutY="44.0" opacity="0.84" prefHeight="23.0" prefWidth="173.0" promptText="0.00" text="10000.00">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER" layoutX="39.0" layoutY="85.0" prefHeight="19.0" prefWidth="69.0" style="&#10;" text="Amount:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="85.0" opacity="0.0" prefHeight="19.0" prefWidth="69.0" style="&#10;" text="Amount:" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" layoutX="103.0" layoutY="83.0" prefHeight="23.0" prefWidth="69.0" promptText="00" text="700,000">
+                  <TextField alignment="CENTER" disable="true" layoutX="103.0" layoutY="83.0" opacity="0.0" prefHeight="23.0" prefWidth="69.0" promptText="00" text="700,000">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="229.0" layoutY="83.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="47.0" text="Withdraw">
+                  <Button disable="true" layoutX="229.0" layoutY="83.0" mnemonicParsing="false" opacity="0.0" prefHeight="23.0" prefWidth="47.0" text="Withdraw">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </Button>
-                  <Button layoutX="176.0" layoutY="83.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="47.0" text="Deposit">
+                  <Button disable="true" layoutX="176.0" layoutY="83.0" mnemonicParsing="false" opacity="0.0" prefHeight="23.0" prefWidth="47.0" text="Deposit">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
+            <BorderPane fx:id="statusMessage" layoutX="447.0" layoutY="494.0" opacity="0.0" prefHeight="32.0" prefWidth="336.0" style="-fx-background-color: #1b1b1b #1b1b1b; -fx-border-radius: 8; -fx-border-color: #9f9f9f; -fx-border-width: 3;">
+               <center>
+                  <Text fx:id="message" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
       </children>
     </AnchorPane>
   </children>
