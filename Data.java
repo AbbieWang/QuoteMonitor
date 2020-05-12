@@ -40,13 +40,18 @@ public class Data {
         return (double)obj.get("price");
     }
 
-    public static double getChangesPercentage(String company) throws Exception {
+    public static String getChangesPercentage(String company) throws Exception {
         JSONParser parser = new JSONParser();
         URL url = new URL("https://financialmodelingprep.com/api/v3/quote/" + company);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         JSONArray body = (JSONArray) parser.parse(reader);
         JSONObject obj = (JSONObject) body.get(0);
-        return (double)obj.get("changesPercentage");
+        if ((double)obj.get("changesPercentage") < 0) {
+            return "" + (double)obj.get("changesPercentage");
+        }
+        else {
+            return "+" + (double)obj.get("changesPercentage");
+        }
     }
 
 
