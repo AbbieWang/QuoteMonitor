@@ -1,10 +1,10 @@
-package sample;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -12,15 +12,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import java.awt.event.*;
+import javafx.event.EventHandler;
+import org.json.simple.parser.ParseException;
 
 import javax.json.JsonObject;
 import javax.json.JsonArray;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*
 This is a class displaying the real time data on a GUI platform.
  */
-public class Main extends Application {
+public class MainApp extends Application {
 
 
     /*
@@ -95,42 +99,58 @@ public class Main extends Application {
         bGOOGL = new Button();
         bGOOGL.setText("Alphabet Class A");
         bGOOGL.setOnAction(e -> System.out.println(labelGOOGL));
-/*
-        //Creating the Scatter chart
-        NumberAxis xAxis = new NumberAxis(0, 12, 3);
-        xAxis.setLabel("Time");
-        NumberAxis yAxis = new NumberAxis(0, 16, 4);
-        yAxis.setLabel("Price");
-        ScatterChart<String, Number> scatterChart = new ScatterChart(xAxis, yAxis);
-*/
-        primaryStage.setTitle("Line Chart Sample");
-        //defining the axes
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("5-min time interval over the last hour");
-        //creating the chart
-        final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
 
+        //Create line chart: the x-axis is categorical and the y-axis is numeric
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("1-h time interval stock prices change");
+        final LineChart<String, Number> lineChart = new LineChart<String, Number>(
+                xAxis, yAxis);
         lineChart.setTitle("Last-Hour Stock Prices");
         //defining a series
         XYChart.Series series = new XYChart.Series();
-        series.setName("MSFT");
+        series.setName("The stock you click on");
 
         //Import the historical price data
         Data hist = new Data();
-        double [] y_axis = hist.getHistoricalData("MSFT");
-        String[] x_axis = hist.getTimeInterval("MSFT");
+
+        //TODO:Solve this
+
+  /*      bMSFT.setOnAction((event) -> {
+            System.out.println(labelMSFT);
+
+            double [] y_axis = new double[30];
+            try {
+                y_axis = hist.getHistoricalData("MSFT");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String[] x_axis = new String[30];
+            try {
+                x_axis = hist.getTimeInterval("MSFT");
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
+            }
+            for(int i = 0;i<30;i++){
+
+                    series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
+        }});
+*/
+        double []y_axis = hist.getHistoricalData("AAPL");
+        String []x_axis = hist.getTimeInterval("AAPL");
+
+
 
         //Add to the array
-        for(int i = 0;i<9;i++){
-            series.getData().add(new XYChart.Data(i,y_axis[i]));
+        for(int i = 0;i<30;i++){
+
+            series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
         }
         lineChart.getData().add(series);
 
         //Create a flow pane to display each button
         FlowPane flow = new FlowPane(Orientation.VERTICAL,5,5);
-        //to add space around the pane
+        //to add space around the pane from the top of the screen
         flow.setPadding(new Insets(50));
         flow.getChildren().addAll(bMSFT,bAAPL,bAMZN,bFB,bGOOGL);
         flow.getChildren().add(lineChart);
