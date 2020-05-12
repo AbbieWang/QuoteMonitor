@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -9,13 +11,14 @@ import java.nio.charset.StandardCharsets;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 //this class gets the data from url and puts ticker and stock price into database
 public class Data {
 
-    //get 5 min historical data from JSON and puts into an array
+    //get 1 hour historical data from JSON and puts into an array
     public static double[] getHistoricalData(String company) throws Exception {
-        double numbers[] = new double[12];
+        double numbers[] = new double[30];
         JSONParser parser = new JSONParser();
         String sql;
         URL url = new URL("https://financialmodelingprep.com/api/v3/historical-chart/1hour/" + company);
@@ -26,11 +29,31 @@ public class Data {
         encoding = encoding == null ? "UTF-8" : encoding;
         JSONArray body = (JSONArray) parser.parse(new InputStreamReader(in));
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 30; i++) {
             JSONObject obj = (JSONObject) body.get(i);
             numbers[i] = (double) obj.get("open");
         }
         return numbers;
+    }
+
+    //get the time interval for the historical data change
+    public String[] getTimeInterval(String company) throws IOException, ParseException {
+        String interval[] = new String[30];
+        JSONParser parser = new JSONParser();
+        String sql;
+        URL url = new URL("https://financialmodelingprep.com/api/v3/historical-chart/30min/" + company);
+
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String encoding = con.getContentEncoding();
+        encoding = encoding == null ? "UTF-8" : encoding;
+        JSONArray body = (JSONArray) parser.parse(new InputStreamReader(in));
+
+        for (int i = 0; i < 30; i++) {
+            JSONObject obj = (JSONObject) body.get(i);
+            interval[i] = obj.get("date").toString();
+        }
+        return interval;
     }
 
     //gets the real time price and returns it
@@ -42,6 +65,7 @@ public class Data {
         JSONObject obj = (JSONObject)body.get(0);
         return (double)obj.get("price");
     }
-    
+
+
 
 }
