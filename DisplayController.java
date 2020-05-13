@@ -318,6 +318,122 @@ public class DisplayController implements Initializable {
         s5.setText(convert.toString(tmp));
         a5.setText("0");
     }
+    public void sellStocks1() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a1.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a1.getText())  > convert.fromString(s1.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a1.getText()) * convert.fromString(p1.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s1.getText()) - convert.fromString(a1.getText());
+        s1.setText(convert.toString(tmp));
+        a1.setText("0");
+    }
+    public void sellStocks2() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a2.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a2.getText())  > convert.fromString(s2.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a2.getText()) * convert.fromString(p2.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s2.getText()) - convert.fromString(a2.getText());
+        s2.setText(convert.toString(tmp));
+        a2.setText("0");
+    }
+    public void sellStocks3() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a3.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a3.getText())  > convert.fromString(s3.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a3.getText()) * convert.fromString(p3.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s3.getText()) - convert.fromString(a3.getText());
+        s3.setText(convert.toString(tmp));
+        a3.setText("0");
+    }
+    public void sellStocks4() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a4.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a4.getText())  > convert.fromString(s4.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a4.getText()) * convert.fromString(p4.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s4.getText()) - convert.fromString(a4.getText());
+        s4.setText(convert.toString(tmp));
+        a4.setText("0");
+    }
+    public void sellStocks5() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a5.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a5.getText())  > convert.fromString(s5.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a5.getText()) * convert.fromString(p5.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s5.getText()) - convert.fromString(a5.getText());
+        s5.setText(convert.toString(tmp));
+        a5.setText("0");
+    }
+
 
     public void displayErrorMessage(String msg) {
         statusMessage.setOpacity(1.0);
@@ -330,7 +446,7 @@ public class DisplayController implements Initializable {
         errMsg.play();
     }
     public void updateTimeline() {
-        Timeline update = new Timeline(new KeyFrame(Duration.millis(60000), ae -> {
+        Timeline update = new Timeline(new KeyFrame(Duration.millis(30000), ae -> {
             try {
                 updateApp();
             } catch (Exception e) {
