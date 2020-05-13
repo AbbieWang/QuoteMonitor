@@ -18,7 +18,7 @@ public class DataTest {
     @Test
     void gettingUrl() throws IOException {
         URL url = new URL("https://financialmodelingprep.com/api/v3/historical-chart/5min/GOOG");
-        System.out.print(url.openConnection());
+        System.out.print("url: " + url.openConnection());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class DataTest {
         URLConnection con = url.openConnection();
         InputStream in = con.getInputStream();
         JSONArray body = (JSONArray) parser.parse(new InputStreamReader(in));
-        System.out.print(body);
+        System.out.print("json array: " + body);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class DataTest {
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         JSONArray body = (JSONArray) parser.parse(reader);
         JSONObject obj = (JSONObject)body.get(0);
-        System.out.print(obj);
+        System.out.print("json object: " + obj);
     }
 
     @Test
@@ -48,14 +48,29 @@ public class DataTest {
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         JSONArray body = (JSONArray) parser.parse(reader);
         JSONObject obj = (JSONObject)body.get(0);
-        System.out.print(obj.get("price"));
+        System.out.print("price: " + obj.get("price"));
     }
 
     @Test
     void gettingHistoricalDataArray() throws Exception {
-        System.out.println(data.getHistoricalData("GOOG")[0]);
-        System.out.println(data.getHistoricalData("GOOG")[1]);
-        System.out.println(data.getHistoricalData("GOOG")[2]);
+        System.out.println("array index 0: " + data.getHistoricalData("GOOG")[0]);
+        System.out.println("array index 1: " + data.getHistoricalData("GOOG")[1]);
+        System.out.println("array index 2: " + data.getHistoricalData("GOOG")[2]);
+    }
+
+    @Test
+    void gettingTimeInterval() throws IOException, ParseException {
+        System.out.print("day and time: " + data.getTimeInterval("GOOG")[0]);
+        System.out.print("day and time: " + data.getTimeInterval("GOOG")[1]);
+        System.out.print("day and time: " + data.getTimeInterval("GOOG")[2]);
+    }
+
+
+    @Test
+    void gettingChangesPercentage() throws Exception {
+        System.out.print("percent change: " + data.getChangesPercentage("GOOG"));
+        System.out.print("percent change: " + data.getChangesPercentage("AAPL"));
+        System.out.print("percent change: " + data.getChangesPercentage("MSFT"));
     }
 
 
