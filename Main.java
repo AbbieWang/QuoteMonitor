@@ -11,7 +11,7 @@ public class Main extends Application {
     static Data data = new Data();
 
     public static void main(String[] args) throws Exception {
-        data.insertRealTimeData("GOOGL");
+        //data.insertRealTimeData("GOOGL");
         //data.insertHistoricalData("GOOGL");
         launch(args);
     }
@@ -20,7 +20,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("QuoteMonitorGUI.fxml"));
         primaryStage.setTitle("Quote Monitor");
-        Scene scene = new Scene(root,900, 600);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -1,20 +1,18 @@
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javafx.util.converter.DoubleStringConverter;
 
-import java.awt.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -48,13 +46,32 @@ public class DisplayController extends TimerTask implements Initializable {
     @FXML
     private Label timeText;
 
+    @FXML
+    private CategoryAxis xAxis;
+    @FXML
+    private NumberAxis yAxis;
+    @FXML
+    private LineChart<String, Number> lineChart;
+    XYChart.Series series = new XYChart.Series();
+
+
     Data data = new Data();
+
+    public DisplayController() throws Exception {
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         date();
         time();
+        try {
+            getGraph("AAPL");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         try {
               updateApp();
 //            updateStock1("Alphabet Inc.", "GOOGL");
@@ -296,7 +313,47 @@ public class DisplayController extends TimerTask implements Initializable {
         a5.setText("0");
     }
 
+    //method for creating a graph of historical data
+    public void getGraph(String company) throws Exception {
+        double[] y_axis = data.getHistoricalData(company);
+        String[] x_axis = data.getTimeInterval(company);
+        //Add to the array
+        for(int i = 29;i>=0;i--){
+            series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
+        }
+        lineChart.getData().add(series);
+        //setting the yAxis
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(findMin(company)-5);
+        yAxis.setUpperBound(findMax(company)+5);
+        yAxis.setTickUnit(2);
+    }
 
+    //method to find min price for historical data axis
+    public double findMin(String company) throws Exception {
+        double[] result = data.getHistoricalData(company);
+        double min = result[0];
+        int length = result.length;
+        for (int i = 0; i < length; i++) {
+            if (result[i] < min) {
+                min = result[i];
+            }
+        }
+        return min;
+    }
+
+    //method to find max price for historical data axis
+    public double findMax(String company) throws Exception {
+        double[] result = data.getHistoricalData(company);
+        double max = result[0];
+        int length = result.length;
+        for (int i = 0; i < length; i++) {
+            if (result[i] > max) {
+                max = result[i];
+            }
+        }
+        return max;
+    }
 
     @Override
     @FXML
