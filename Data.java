@@ -1,3 +1,5 @@
+//package Final_Project.QuoteMonitor;
+
 import java.io.BufferedReader;
 
 import java.io.IOException;
@@ -74,6 +76,5 @@ public class Data {
             return "+" + (double)obj.get("changesPercentage");
         }
     }
-
 
 }

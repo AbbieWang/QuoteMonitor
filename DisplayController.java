@@ -18,10 +18,9 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.regex.Pattern;
 
-public class DisplayController extends TimerTask implements Initializable {
+public class DisplayController implements Initializable {
 
     @FXML
     private TitledPane stock1,stock2,stock3,stock4,stock5;
@@ -85,6 +84,7 @@ public class DisplayController extends TimerTask implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        updateTimeline();
     }
 
 
@@ -129,14 +129,16 @@ public class DisplayController extends TimerTask implements Initializable {
     //Method that updates both the price and label (including % change)
     @FXML
     public void updateStock1(String stockName, String ticker) throws Exception{
-        String price = convertToString(data.getRealTimeData(ticker));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p1.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock1.setText(stockName + " ($"+ ticker +")                 " + change + "%");
     }
     @FXML
     public void updateStock2(String stockName, String ticker) throws Exception{
-        String price = convertToString(data.getRealTimeData(ticker));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p2.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock2.setText(stockName + " ($"+ ticker +")                 " + change + "%");
@@ -144,7 +146,8 @@ public class DisplayController extends TimerTask implements Initializable {
 
     @FXML
     public void updateStock3(String stockName, String ticker) throws Exception{
-        String price = convertToString(data.getRealTimeData(ticker));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p3.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock3.setText(stockName + " ($"+ ticker +")                 " + change + "%");
@@ -152,7 +155,8 @@ public class DisplayController extends TimerTask implements Initializable {
 
     @FXML
     public void updateStock4(String stockName, String ticker) throws Exception{
-        String price = convertToString(data.getRealTimeData(ticker));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p4.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock4.setText(stockName + " ($"+ ticker +")                 " + change + "%");
@@ -160,7 +164,10 @@ public class DisplayController extends TimerTask implements Initializable {
 
     @FXML
     public void updateStock5(String stockName, String ticker) throws Exception{
-        String price = convertToString(data.getRealTimeData(ticker));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+
+
         p5.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock5.setText(stockName + " ($"+ ticker +")                 " + change + "%");
@@ -189,6 +196,8 @@ public class DisplayController extends TimerTask implements Initializable {
                 + (convert.fromString(s5.getText()) * convert.fromString(p5.getText()));
 
         total = total + convert.fromString(balance.getText());
+        DecimalFormat df = new DecimalFormat("#.##");
+        total = Double.valueOf(df.format(total));
         return total;
     }
 
@@ -202,18 +211,19 @@ public class DisplayController extends TimerTask implements Initializable {
     }
     //missing case for input not being a valid number
     public void purchaseStocks1() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a1.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
         updateApp();
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
-
         if (convert.fromString(a1.getText()) * convert.fromString(p1.getText()) > money) {
-            statusMessage.setOpacity(1.0);
-            message.setText("Insufficient Funds!");
-            message.setStyle("-fx-text-fill: red;");
-//            Timer timer = new Timer();
-//            timer.schedule(new DisplayController(), 3000);
+            displayErrorMessage("Insufficient Funds!");
             return;
         }
+
         money = money - (convert.fromString(a1.getText()) * convert.fromString(p1.getText()));
         DecimalFormat df = new DecimalFormat("#.##");
         money = Double.valueOf(df.format(money));
@@ -225,16 +235,15 @@ public class DisplayController extends TimerTask implements Initializable {
     }
 
     public void purchaseStocks2() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a2.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
         updateApp();
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
-
         if (convert.fromString(a2.getText()) * convert.fromString(p2.getText()) > money) {
-            statusMessage.setOpacity(1.0);
-            message.setText("Insufficient Funds!");
-            message.setStyle("-fx-text-fill: red;");
-//            Timer timer = new Timer();
-//            timer.schedule(new DisplayController(), 3000);
+            displayErrorMessage("Insufficient Funds!");
             return;
         }
         money = money - (convert.fromString(a2.getText()) * convert.fromString(p2.getText()));
@@ -247,16 +256,15 @@ public class DisplayController extends TimerTask implements Initializable {
         a2.setText("0");
     }
     public void purchaseStocks3() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a3.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
         updateApp();
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
-
         if (convert.fromString(a3.getText()) * convert.fromString(p3.getText()) > money) {
-            statusMessage.setOpacity(1.0);
-            message.setText("Insufficient Funds!");
-            message.setStyle("-fx-text-fill: red;");
-//            Timer timer = new Timer();
-//            timer.schedule(new DisplayController(), 3000);
+            displayErrorMessage("Insufficient Funds!");
             return;
         }
         money = money - (convert.fromString(a3.getText()) * convert.fromString(p3.getText()));
@@ -269,16 +277,15 @@ public class DisplayController extends TimerTask implements Initializable {
         a3.setText("0");
     }
     public void purchaseStocks4() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a4.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
         updateApp();
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
-
         if (convert.fromString(a4.getText()) * convert.fromString(p4.getText()) > money) {
-            statusMessage.setOpacity(1.0);
-            message.setText("Insufficient Funds!");
-            message.setStyle("-fx-text-fill: red;");
-//            Timer timer = new Timer();
-//            timer.schedule(new DisplayController(), 3000);
+            displayErrorMessage("Insufficient Funds!");
             return;
         }
         money = money - (convert.fromString(a4.getText()) * convert.fromString(p4.getText()));
@@ -291,16 +298,15 @@ public class DisplayController extends TimerTask implements Initializable {
         a4.setText("0");
     }
     public void purchaseStocks5() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a5.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
         updateApp();
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
-
         if (convert.fromString(a5.getText()) * convert.fromString(p5.getText()) > money) {
-            statusMessage.setOpacity(1.0);
-            message.setText("Insufficient Funds!");
-            message.setStyle("-fx-text-fill: red;");
-//            Timer timer = new Timer();
-//            timer.schedule(new DisplayController(), 3000);
+            displayErrorMessage("Insufficient Funds!");
             return;
         }
         money = money - (convert.fromString(a5.getText()) * convert.fromString(p5.getText()));
@@ -311,6 +317,28 @@ public class DisplayController extends TimerTask implements Initializable {
         double tmp = convert.fromString(a5.getText()) + convert.fromString(s5.getText());
         s5.setText(convert.toString(tmp));
         a5.setText("0");
+    }
+
+    public void displayErrorMessage(String msg) {
+        statusMessage.setOpacity(1.0);
+        message.setText(msg);
+        message.setStyle("-fx-text-fill: red;");
+        hideErrorMessage();
+    }
+    public void hideErrorMessage() {
+        Timeline errMsg = new Timeline(new KeyFrame(Duration.millis(2000), ae -> {statusMessage.setOpacity(0);}));
+        errMsg.play();
+    }
+    public void updateTimeline() {
+        Timeline update = new Timeline(new KeyFrame(Duration.millis(60000), ae -> {
+            try {
+                updateApp();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
+        update.setCycleCount(Animation.INDEFINITE);
+        update.play();
     }
 
     //method for creating a graph of historical data
@@ -355,9 +383,10 @@ public class DisplayController extends TimerTask implements Initializable {
         return max;
     }
 
-    @Override
-    @FXML
-    public void run() {
-        statusMessage.setOpacity(0);
-    }
+
+//    @Override
+//    @FXML
+//    public void run() {
+//
+//    }
 }
