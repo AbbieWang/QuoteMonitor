@@ -76,5 +76,5 @@ public class Data {
             return "+" + (double)obj.get("changesPercentage");
         }
     }
-
+    
 }
