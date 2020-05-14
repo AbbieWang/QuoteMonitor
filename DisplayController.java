@@ -253,7 +253,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock1.getText(),share);
+        db.updateSharesDatabase("GOOGL",share);
         db.updateBalanceDatabase(money);
     }
 
@@ -280,7 +280,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock2.getText(),share);
+        db.updateSharesDatabase("AAPL",share);
         db.updateBalanceDatabase(money);
     }
 
@@ -307,7 +307,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock3.getText(),share);
+        db.updateSharesDatabase("AMZN",share);
         db.updateBalanceDatabase(money);
     }
 
@@ -334,7 +334,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock4.getText(),share);
+        db.updateSharesDatabase("MSFT",share);
         db.updateBalanceDatabase(money);
     }
     public void purchaseStocks5() throws Exception {
@@ -360,7 +360,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock5.getText(),share);
+        db.updateSharesDatabase("TSLA",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks1() throws Exception {
@@ -388,7 +388,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock1.getText(),share);
+        db.updateSharesDatabase("GOOGL",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks2() throws Exception {
@@ -416,7 +416,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock2.getText(),share);
+        db.updateSharesDatabase("AAPL",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks3() throws Exception {
@@ -444,7 +444,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock3.getText(),share);
+        db.updateSharesDatabase("AMZN",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks4() throws Exception {
@@ -472,7 +472,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock4.getText(),share);
+        db.updateSharesDatabase("MSFT",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks5() throws Exception {
@@ -500,7 +500,7 @@ public class DisplayController implements Initializable {
 
         //update database
         int share = (int) tmp;
-        db.updateSharesDatabase(stock5.getText(),share);
+        db.updateSharesDatabase("TSLA",share);
         db.updateBalanceDatabase(money);
     }
 
