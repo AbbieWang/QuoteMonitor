@@ -58,6 +58,8 @@ public class DisplayController implements Initializable {
     double[] y_axis;
     String[] x_axis;
 
+    String currentGraph;
+
     Database db = new Database();
 
     public DisplayController() throws Exception {
@@ -74,11 +76,7 @@ public class DisplayController implements Initializable {
        // lineChart.getData().add(series);
         y_axis = new double[30];
         x_axis = new String[30];
-//        try {
-//            getGraph("AAPL");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+
         try {
             balance.setText(convertToString(db.getBalance()));
         } catch (Exception e) {
@@ -97,13 +95,6 @@ public class DisplayController implements Initializable {
 
         try {
               updateApp();
-//            updateStock1("Alphabet Inc.", "GOOGL");
-//            updateStock2("Apple Inc.        ", "AAPL");
-//            updateStock3("Amazon          ", "AMZN");
-//            updateStock4("Microsoft         ", "MSFT");
-//            updateStock5("Tesla                 ", "TSLA");
-//            fetchPortfolio();
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,19 +126,6 @@ public class DisplayController implements Initializable {
     public String convertToString(double price) {
         return price+"";
     }
-
-//    @FXML
-//    public void getGoogPrice() throws Exception {
-//       String price = convertToString(data.getRealTimeData("GOOGL"));
-//       p1.setText(price);
-//    }
-//
-//    @FXML
-//    public void setGoogLabel() throws Exception {
-//        double change = data.getChangesPercentage("GOOGL");
-//        stock1.setText("Alphabet Inc. ($GOOGL)                 +" + change + "%");
-//    }
-
 
 
     //Method that updates both the price and label (including % change)
@@ -244,7 +222,6 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
-        updateGraph("GOOGL");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a1.getText()) * convert.fromString(p1.getText()) > money) {
@@ -273,7 +250,6 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
-        updateGraph("AAPL");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a2.getText()) * convert.fromString(p2.getText()) > money) {
@@ -301,7 +277,6 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
-        updateGraph("AMZN");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a3.getText()) * convert.fromString(p3.getText()) > money) {
@@ -329,7 +304,6 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
-        updateGraph("MSFT");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a4.getText()) * convert.fromString(p4.getText()) > money) {
@@ -356,7 +330,6 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
-        updateGraph("TSLA");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a5.getText()) * convert.fromString(p5.getText()) > money) {
@@ -532,6 +505,7 @@ public class DisplayController implements Initializable {
         Timeline update = new Timeline(new KeyFrame(Duration.millis(30000), ae -> {
             try {
                 updateApp();
+                updateGraph();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -541,7 +515,7 @@ public class DisplayController implements Initializable {
     }
 
     //method to find min price for historical data axis
-    public double findMin(String company) throws Exception {
+    public int findMin(String company) throws Exception {
         double[] result = data.getHistoricalData(company);
         double min = result[0];
         int length = result.length;
@@ -550,11 +524,11 @@ public class DisplayController implements Initializable {
                 min = result[i];
             }
         }
-        return min;
+        return (int)min;
     }
 
     //method to find max price for historical data axis
-    public double findMax(String company) throws Exception {
+    public int findMax(String company) throws Exception {
         double[] result = data.getHistoricalData(company);
         double max = result[0];
         int length = result.length;
@@ -563,11 +537,13 @@ public class DisplayController implements Initializable {
                 max = result[i];
             }
         }
-        return max;
+        return (int)max;
     }
  
     //clear the data in the chart
-    public void updateGraph(String ticker) throws Exception {
+    public void updateGraph() throws Exception {
+        String ticker = getCurrentGraph();
+
         //clear the previous data
         lineChart.getData().clear();
         boolean first;
@@ -596,6 +572,35 @@ public class DisplayController implements Initializable {
         yAxis.setLowerBound(findMin(ticker)-5);
         yAxis.setUpperBound(findMax(ticker)+5);
         yAxis.setTickUnit(2);
+    }
+
+    public void setCurrentGraph1() throws Exception {
+        currentGraph = "GOOGL";
+        updateGraph();
+    }
+    public void setCurrentGraph2() throws Exception {
+        currentGraph = "AAPL";
+        updateGraph();
+
+    }
+    public void setCurrentGraph3() throws Exception {
+        currentGraph = "AMZN";
+        updateGraph();
+
+    }
+    public void setCurrentGraph4() throws Exception {
+        currentGraph = "MSFT";
+        updateGraph();
+
+    }
+    public void setCurrentGraph5() throws Exception {
+        currentGraph = "TSLA";
+        updateGraph();
+
+    }
+
+    public String getCurrentGraph() {
+        return currentGraph;
     }
 
 }

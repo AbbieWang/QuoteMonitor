@@ -31,7 +31,7 @@
                      <children>
                         <Accordion prefHeight="205.0" prefWidth="336.0">
                           <panes>
-                            <TitledPane fx:id="stock1" animated="false" text="Stock1 ($TCKR)                            +2.33%">
+                            <TitledPane fx:id="stock1" animated="false" onMouseClicked="#setCurrentGraph1" text="Stock1 ($TCKR)                            +2.33%">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -82,7 +82,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                             </TitledPane>
-                              <TitledPane fx:id="stock2" animated="false" layoutX="10.0" layoutY="10.0" text="Stock2 ($TCKR)                            -1.13%">
+                              <TitledPane fx:id="stock2" animated="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#setCurrentGraph2" text="Stock2 ($TCKR)                            -1.13%">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -133,7 +133,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TitledPane>
-                              <TitledPane fx:id="stock3" animated="false" layoutX="10.0" layoutY="183.0" text="Stock3 ($TCKR)                            +0.57%">
+                              <TitledPane fx:id="stock3" animated="false" layoutX="10.0" layoutY="183.0" onMouseClicked="#setCurrentGraph3" text="Stock3 ($TCKR)                            +0.57%">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -184,7 +184,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TitledPane>
-                              <TitledPane fx:id="stock4" animated="false" layoutX="10.0" layoutY="183.0" text="Stock4 ($TCKR)                            +3.29%">
+                              <TitledPane fx:id="stock4" animated="false" layoutX="10.0" layoutY="183.0" onMouseClicked="#setCurrentGraph4" text="Stock4 ($TCKR)                            +3.29%">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -235,7 +235,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TitledPane>
-                              <TitledPane fx:id="stock5" animated="false" layoutX="10.0" layoutY="183.0" text="Stock5 ($TCKR)                            -2.12%">
+                              <TitledPane fx:id="stock5" animated="false" layoutX="10.0" layoutY="183.0" onMouseClicked="#setCurrentGraph5" text="Stock5 ($TCKR)                            -2.12%">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -298,7 +298,7 @@
             </Label>
             <BorderPane layoutX="-8.0" layoutY="39.0" prefHeight="44.0" prefWidth="390.0" style="-fx-background-color: #1b1b1b #1b1b1b; -fx-border-radius: 8; -fx-border-color: #9f9f9f; -fx-border-width: 3;">
                <center>
-                  <Label fx:id="dateText" prefHeight="27.0" prefWidth="187.0" style="&#10;" text="May 11, 2020" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" BorderPane.alignment="CENTER">
+                  <Label fx:id="dateText" prefHeight="27.0" prefWidth="222.0" style="&#10;" text="May 11, 2020" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>

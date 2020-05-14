@@ -11,8 +11,6 @@ public class Main extends Application {
     static Data data = new Data();
 
     public static void main(String[] args) throws Exception {
-        //data.insertRealTimeData("GOOGL");
-        //data.insertHistoricalData("GOOGL");
         launch(args);
     }
 
