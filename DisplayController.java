@@ -1,3 +1,4 @@
+import com.sun.jdi.event.ClassPrepareEvent;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,6 +15,7 @@ import javafx.util.Duration;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
+import java.sql.*;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,6 +57,7 @@ public class DisplayController implements Initializable {
 
 
     Data data = new Data();
+    Database db = new Database();
 
     public DisplayController() throws Exception {
     }
@@ -66,6 +69,20 @@ public class DisplayController implements Initializable {
         time();
         try {
             getGraph("AAPL");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            balance.setText(convertToString(db.getBalance()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            s1.setText(""+db.getShares("GOOGL"));
+            s2.setText(""+db.getShares("AAPL"));
+            s3.setText(""+db.getShares("AMZN"));
+            s4.setText(""+db.getShares("MSFT"));
+            s5.setText(""+db.getShares("TSLA"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,6 +146,7 @@ public class DisplayController implements Initializable {
     //Method that updates both the price and label (including % change)
     @FXML
     public void updateStock1(String stockName, String ticker) throws Exception{
+        DoubleStringConverter convert = new DoubleStringConverter();
         DecimalFormat df = new DecimalFormat("#.##");
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p1.setText(price);
@@ -175,7 +193,7 @@ public class DisplayController implements Initializable {
 
     //This method will have to change later to get portfolio value out of database to keep track
     @FXML
-    public void fetchPortfolio() {
+    public void fetchPortfolio() throws Exception {
         //PortfolioController portfolio = new PortfolioController();
         double val = calculatePortfolio();
         //CHANGE
@@ -232,6 +250,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(a1.getText()) + convert.fromString(s1.getText());
         s1.setText(convert.toString(tmp));
         a1.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock1.getText(),share);
+        db.updateBalanceDatabase(money);
     }
 
     public void purchaseStocks2() throws Exception {
@@ -254,7 +277,13 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(a2.getText()) + convert.fromString(s2.getText());
         s2.setText(convert.toString(tmp));
         a2.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock2.getText(),share);
+        db.updateBalanceDatabase(money);
     }
+
     public void purchaseStocks3() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a3.getText() )) {
             displayErrorMessage("Please Enter a Positive Integer");
@@ -275,7 +304,13 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(a3.getText()) + convert.fromString(s3.getText());
         s3.setText(convert.toString(tmp));
         a3.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock3.getText(),share);
+        db.updateBalanceDatabase(money);
     }
+
     public void purchaseStocks4() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a4.getText() )) {
             displayErrorMessage("Please Enter a Positive Integer");
@@ -296,6 +331,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(a4.getText()) + convert.fromString(s4.getText());
         s4.setText(convert.toString(tmp));
         a4.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock4.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void purchaseStocks5() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a5.getText() )) {
@@ -317,6 +357,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(a5.getText()) + convert.fromString(s5.getText());
         s5.setText(convert.toString(tmp));
         a5.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock5.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void sellStocks1() throws Exception {
         //make sure "amount" is a valid input
@@ -340,6 +385,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(s1.getText()) - convert.fromString(a1.getText());
         s1.setText(convert.toString(tmp));
         a1.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock1.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void sellStocks2() throws Exception {
         //make sure "amount" is a valid input
@@ -363,6 +413,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(s2.getText()) - convert.fromString(a2.getText());
         s2.setText(convert.toString(tmp));
         a2.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock2.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void sellStocks3() throws Exception {
         //make sure "amount" is a valid input
@@ -386,6 +441,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(s3.getText()) - convert.fromString(a3.getText());
         s3.setText(convert.toString(tmp));
         a3.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock3.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void sellStocks4() throws Exception {
         //make sure "amount" is a valid input
@@ -409,6 +469,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(s4.getText()) - convert.fromString(a4.getText());
         s4.setText(convert.toString(tmp));
         a4.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock4.getText(),share);
+        db.updateBalanceDatabase(money);
     }
     public void sellStocks5() throws Exception {
         //make sure "amount" is a valid input
@@ -432,6 +497,11 @@ public class DisplayController implements Initializable {
         double tmp = convert.fromString(s5.getText()) - convert.fromString(a5.getText());
         s5.setText(convert.toString(tmp));
         a5.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase(stock5.getText(),share);
+        db.updateBalanceDatabase(money);
     }
 
 
@@ -498,7 +568,6 @@ public class DisplayController implements Initializable {
         }
         return max;
     }
-
 
 //    @Override
 //    @FXML
