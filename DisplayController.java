@@ -53,10 +53,11 @@ public class DisplayController implements Initializable {
     private NumberAxis yAxis;
     @FXML
     private LineChart<String, Number> lineChart;
-    XYChart.Series series = new XYChart.Series();
+    XYChart.Series series;
+    Data data;
+    double[] y_axis;
+    String[] x_axis;
 
-
-    Data data = new Data();
     Database db = new Database();
 
     public DisplayController() throws Exception {
@@ -67,6 +68,11 @@ public class DisplayController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         date();
         time();
+        data = new Data();
+        series = new XYChart.Series();
+        lineChart.getData().add(series);
+        y_axis = new double[30];
+        x_axis = new String[30];
         try {
             getGraph("AAPL");
         } catch (Exception e) {
@@ -152,6 +158,7 @@ public class DisplayController implements Initializable {
         p1.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock1.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        
     }
     @FXML
     public void updateStock2(String stockName, String ticker) throws Exception{
@@ -160,6 +167,7 @@ public class DisplayController implements Initializable {
         p2.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock2.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+   
     }
 
     @FXML
@@ -235,6 +243,7 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
+        updateGraph("GOOGL");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a1.getText()) * convert.fromString(p1.getText()) > money) {
@@ -263,6 +272,7 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
+        updateGraph("AAPL");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a2.getText()) * convert.fromString(p2.getText()) > money) {
@@ -290,6 +300,7 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
+        updateGraph("AMZN");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a3.getText()) * convert.fromString(p3.getText()) > money) {
@@ -317,6 +328,7 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
+        updateGraph("MSFT");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a4.getText()) * convert.fromString(p4.getText()) > money) {
@@ -343,6 +355,7 @@ public class DisplayController implements Initializable {
             return;
         }
         updateApp();
+        updateGraph("TSLA");
         DoubleStringConverter convert = new DoubleStringConverter();
         double money = convert.fromString(balance.getText());
         if (convert.fromString(a5.getText()) * convert.fromString(p5.getText()) > money) {
@@ -528,18 +541,23 @@ public class DisplayController implements Initializable {
     }
 
     //method for creating a graph of historical data
-    public void getGraph(String company) throws Exception {
-        double[] y_axis = data.getHistoricalData(company);
-        String[] x_axis = data.getTimeInterval(company);
+    public void getGraph(String ticker) throws Exception {
+        series.setName("Stock");
+      //  lineChart.getData().add(series);
+        y_axis = data.getHistoricalData(ticker);
+        x_axis = data.getTimeInterval(ticker);
+
         //Add to the array
         for(int i = 29;i>=0;i--){
             series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
         }
-        lineChart.getData().add(series);
+  //      lineChart.setTitle("Hourly Stock Price Changes");
         //setting the yAxis
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Price");
         yAxis.setAutoRanging(false);
-        yAxis.setLowerBound(findMin(company)-5);
-        yAxis.setUpperBound(findMax(company)+5);
+        yAxis.setLowerBound(findMin(ticker)-5);
+        yAxis.setUpperBound(findMax(ticker)+5);
         yAxis.setTickUnit(2);
     }
 
@@ -567,6 +585,21 @@ public class DisplayController implements Initializable {
             }
         }
         return max;
+    }
+ 
+    //clear the data in the chart
+    public void updateGraph(String ticker) throws Exception {
+        //clear the previous data
+        series.getData().removeAll();
+        lineChart.getData().removeAll();
+
+        //get the two arrays again
+        y_axis = data.getHistoricalData(ticker);
+        x_axis = data.getTimeInterval(ticker);
+        //Add to the array
+        for(int i = 29;i>=0;i--){
+            series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
+        }
     }
 
 //    @Override
