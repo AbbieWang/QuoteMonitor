@@ -70,14 +70,15 @@ public class DisplayController implements Initializable {
         time();
         data = new Data();
         series = new XYChart.Series();
-        lineChart.getData().add(series);
+        lineChart.setTitle("Hourly Stock Price Changes");
+       // lineChart.getData().add(series);
         y_axis = new double[30];
         x_axis = new String[30];
-        try {
-            getGraph("AAPL");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            getGraph("AAPL");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         try {
             balance.setText(convertToString(db.getBalance()));
         } catch (Exception e) {
@@ -517,7 +518,6 @@ public class DisplayController implements Initializable {
         db.updateBalanceDatabase(money);
     }
 
-
     public void displayErrorMessage(String msg) {
         statusMessage.setOpacity(1.0);
         message.setText(msg);
@@ -538,27 +538,6 @@ public class DisplayController implements Initializable {
         }));
         update.setCycleCount(Animation.INDEFINITE);
         update.play();
-    }
-
-    //method for creating a graph of historical data
-    public void getGraph(String ticker) throws Exception {
-        series.setName("Stock");
-      //  lineChart.getData().add(series);
-        y_axis = data.getHistoricalData(ticker);
-        x_axis = data.getTimeInterval(ticker);
-
-        //Add to the array
-        for(int i = 29;i>=0;i--){
-            series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
-        }
-  //      lineChart.setTitle("Hourly Stock Price Changes");
-        //setting the yAxis
-        xAxis.setLabel("Time");
-        yAxis.setLabel("Price");
-        yAxis.setAutoRanging(false);
-        yAxis.setLowerBound(findMin(ticker)-5);
-        yAxis.setUpperBound(findMax(ticker)+5);
-        yAxis.setTickUnit(2);
     }
 
     //method to find min price for historical data axis
@@ -590,21 +569,33 @@ public class DisplayController implements Initializable {
     //clear the data in the chart
     public void updateGraph(String ticker) throws Exception {
         //clear the previous data
-        series.getData().removeAll();
-        lineChart.getData().removeAll();
+        lineChart.getData().clear();
+        boolean first;
+        if(x_axis[0] == null) {
+            first = true;
+        } else {
+            first = false;
+        }
 
         //get the two arrays again
         y_axis = data.getHistoricalData(ticker);
         x_axis = data.getTimeInterval(ticker);
         //Add to the array
         for(int i = 29;i>=0;i--){
+            if (first == false) {
+                series.getData().remove(i);
+            }
             series.getData().add(new XYChart.Data<String,Number>(x_axis[i],y_axis[i]));
         }
+        lineChart.getData().add(series);
+        lineChart.setAnimated(false);
+        //setting the axis
+        xAxis.setLabel("Time");
+        yAxis.setLabel("Price");
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(findMin(ticker)-5);
+        yAxis.setUpperBound(findMax(ticker)+5);
+        yAxis.setTickUnit(2);
     }
 
-//    @Override
-//    @FXML
-//    public void run() {
-//
-//    }
 }
