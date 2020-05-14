@@ -58,7 +58,6 @@ public class DisplayController implements Initializable {
     double[] y_axis;
     String[] x_axis;
 
-    Data data = new Data();
     Database db = new Database();
 
     public DisplayController() throws Exception {
