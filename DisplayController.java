@@ -149,7 +149,7 @@ public class DisplayController implements Initializable {
         p2.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock2.setText(stockName + "($"+ ticker +")                " + change + "%");
-   
+
     }
 
     @FXML
@@ -194,7 +194,7 @@ public class DisplayController implements Initializable {
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p7.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock7.setText(stockName + " ($"+ ticker +")             " + change + "%");
+        stock7.setText(stockName + " ($"+ ticker +")                  " + change + "%");
     }
 
     @FXML
@@ -260,7 +260,7 @@ public class DisplayController implements Initializable {
         updateStock4("Microsoft         ", "MSFT");
         updateStock5("Tesla                ", "TSLA");
         updateStock6("Facebook Inc.  ", "FB");
-        updateStock7("JPMorgan Chase", "JPM");
+        updateStock7("JPMorgan       ", "JPM");
         updateStock8("Visa Inc.          ", "V");
         updateStock9("Netflix Inc.      ", "NFLX");
         updateStock10("Zoom Video Inc.", "ZM");
@@ -270,7 +270,7 @@ public class DisplayController implements Initializable {
     public void purchaseStocks1() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a1.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -298,7 +298,7 @@ public class DisplayController implements Initializable {
 
     public void purchaseStocks2() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a2.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -325,7 +325,7 @@ public class DisplayController implements Initializable {
 
     public void purchaseStocks3() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a3.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -352,7 +352,7 @@ public class DisplayController implements Initializable {
 
     public void purchaseStocks4() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a4.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -378,7 +378,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks5() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a5.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -404,7 +404,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks6() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a6.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -430,7 +430,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks7() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a7.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -456,7 +456,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks8() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a8.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -482,7 +482,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks9() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a9.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -508,7 +508,7 @@ public class DisplayController implements Initializable {
     }
     public void purchaseStocks10() throws Exception {
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a10.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -535,7 +535,7 @@ public class DisplayController implements Initializable {
     public void sellStocks1() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a1.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -563,7 +563,7 @@ public class DisplayController implements Initializable {
     public void sellStocks2() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a2.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -591,7 +591,7 @@ public class DisplayController implements Initializable {
     public void sellStocks3() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a3.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -619,7 +619,7 @@ public class DisplayController implements Initializable {
     public void sellStocks4() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a4.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -647,7 +647,7 @@ public class DisplayController implements Initializable {
     public void sellStocks5() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a5.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -675,7 +675,7 @@ public class DisplayController implements Initializable {
     public void sellStocks6() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a6.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -703,7 +703,7 @@ public class DisplayController implements Initializable {
     public void sellStocks7() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a7.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -731,7 +731,7 @@ public class DisplayController implements Initializable {
     public void sellStocks8() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a8.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -759,7 +759,7 @@ public class DisplayController implements Initializable {
     public void sellStocks9() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a9.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -787,7 +787,7 @@ public class DisplayController implements Initializable {
     public void sellStocks10() throws Exception {
         //make sure "amount" is a valid input
         if (!Pattern.matches("^\\d*[1-9]\\d*$", a10.getText() )) {
-            displayErrorMessage("Please Enter a Positive Integer");
+            displayErrorMessage("Please Enter a Whole Number");
             return;
         }
         updateApp();
@@ -861,7 +861,7 @@ public class DisplayController implements Initializable {
         }
         return (int)max;
     }
- 
+
     //clear the data in the chart
     public void updateGraph() throws Exception {
         String ticker = getCurrentGraph();
