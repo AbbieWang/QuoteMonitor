@@ -91,7 +91,7 @@ public class DisplayController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        currentGraph = "GOOGL";
 
         try {
               updateApp();
@@ -137,7 +137,7 @@ public class DisplayController implements Initializable {
         p1.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock1.setText(stockName + " ($"+ ticker +")                 " + change + "%");
-        
+
     }
     @FXML
     public void updateStock2(String stockName, String ticker) throws Exception{
@@ -181,12 +181,9 @@ public class DisplayController implements Initializable {
     //This method will have to change later to get portfolio value out of database to keep track
     @FXML
     public void fetchPortfolio() throws Exception {
-        //PortfolioController portfolio = new PortfolioController();
         double val = calculatePortfolio();
-        //CHANGE
         String pVal = val + "";
         portfolioVal.setText(pVal);
-        //balance.setText("10000");
 
     }
 
@@ -211,7 +208,7 @@ public class DisplayController implements Initializable {
         updateStock2("Apple Inc.        ", "AAPL");
         updateStock3("Amazon          ", "AMZN");
         updateStock4("Microsoft         ", "MSFT");
-        updateStock5("Tesla                 ", "TSLA");
+        updateStock5("Tesla                ", "TSLA");
         fetchPortfolio();
     }
     //missing case for input not being a valid number

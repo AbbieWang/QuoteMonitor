@@ -1,4 +1,3 @@
-//package Final_Project.QuoteMonitor;
 
 import java.io.BufferedReader;
 
@@ -10,6 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
 
 //this class gets the data from url and puts ticker and stock price into database
 public class Data {
+
 
     //get 1 hour historical data from JSON and puts into an array
     public static double[] getHistoricalData(String company) throws Exception {

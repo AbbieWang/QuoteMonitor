@@ -10,6 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -31,7 +33,7 @@
                      <children>
                         <Accordion prefHeight="205.0" prefWidth="336.0">
                           <panes>
-                            <TitledPane fx:id="stock1" animated="false" onMouseClicked="#setCurrentGraph1" text="Stock1 ($TCKR)                            +2.33%">
+                            <TitledPane fx:id="stock1" animated="false" onMouseClicked="#setCurrentGraph1" style="-fx-background-color: #1b1b1b;" text="Stock1 ($TCKR)                            +2.33%">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -384,6 +386,11 @@
                   </LineChart>
                </children>
             </AnchorPane>
+            <ImageView fitHeight="138.0" fitWidth="135.0" layoutX="628.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>
