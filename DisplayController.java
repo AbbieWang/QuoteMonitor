@@ -287,7 +287,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a1.getText()) + convert.fromString(s1.getText());
-        s1.setText(convert.toString(tmp));
+        s1.setText(Integer.toString((int)tmp));
         a1.setText("0");
 
         //update database
@@ -314,7 +314,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a2.getText()) + convert.fromString(s2.getText());
-        s2.setText(convert.toString(tmp));
+        s2.setText(Integer.toString((int)tmp));
         a2.setText("0");
 
         //update database
@@ -341,7 +341,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a3.getText()) + convert.fromString(s3.getText());
-        s3.setText(convert.toString(tmp));
+        s3.setText(Integer.toString((int)tmp));
         a3.setText("0");
 
         //update database
@@ -368,7 +368,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a4.getText()) + convert.fromString(s4.getText());
-        s4.setText(convert.toString(tmp));
+        s4.setText(Integer.toString((int)tmp));
         a4.setText("0");
 
         //update database
@@ -394,7 +394,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a5.getText()) + convert.fromString(s5.getText());
-        s5.setText(convert.toString(tmp));
+        s5.setText(Integer.toString((int)tmp));
         a5.setText("0");
 
         //update database
@@ -420,7 +420,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a6.getText()) + convert.fromString(s6.getText());
-        s6.setText(convert.toString(tmp));
+        s6.setText(Integer.toString((int)tmp));
         a6.setText("0");
 
         //update database
@@ -446,7 +446,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a7.getText()) + convert.fromString(s7.getText());
-        s7.setText(convert.toString(tmp));
+        s7.setText(Integer.toString((int)tmp));
         a7.setText("0");
 
         //update database
@@ -472,7 +472,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a8.getText()) + convert.fromString(s8.getText());
-        s8.setText(convert.toString(tmp));
+        s8.setText(Integer.toString((int)tmp));
         a8.setText("0");
 
         //update database
@@ -498,7 +498,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a9.getText()) + convert.fromString(s9.getText());
-        s9.setText(convert.toString(tmp));
+        s9.setText(Integer.toString((int)tmp));
         a9.setText("0");
 
         //update database
@@ -524,7 +524,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(a10.getText()) + convert.fromString(s10.getText());
-        s10.setText(convert.toString(tmp));
+        s10.setText(Integer.toString((int)tmp));
         a10.setText("0");
 
         //update database
@@ -552,7 +552,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s1.getText()) - convert.fromString(a1.getText());
-        s1.setText(convert.toString(tmp));
+        s1.setText(Integer.toString((int)tmp));
         a1.setText("0");
 
         //update database
@@ -580,7 +580,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s2.getText()) - convert.fromString(a2.getText());
-        s2.setText(convert.toString(tmp));
+        s2.setText(Integer.toString((int)tmp));
         a2.setText("0");
 
         //update database
@@ -608,7 +608,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s3.getText()) - convert.fromString(a3.getText());
-        s3.setText(convert.toString(tmp));
+        s3.setText(Integer.toString((int)tmp));
         a3.setText("0");
 
         //update database
@@ -636,7 +636,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s4.getText()) - convert.fromString(a4.getText());
-        s4.setText(convert.toString(tmp));
+        s4.setText(Integer.toString((int)tmp));
         a4.setText("0");
 
         //update database
@@ -664,7 +664,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s5.getText()) - convert.fromString(a5.getText());
-        s5.setText(convert.toString(tmp));
+        s5.setText(Integer.toString((int)tmp));
         a5.setText("0");
 
         //update database
@@ -692,7 +692,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s6.getText()) - convert.fromString(a6.getText());
-        s6.setText(convert.toString(tmp));
+        s6.setText(Integer.toString((int)tmp));
         a6.setText("0");
 
         //update database
@@ -720,7 +720,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s7.getText()) - convert.fromString(a7.getText());
-        s7.setText(convert.toString(tmp));
+        s7.setText(Integer.toString((int)tmp));
         a7.setText("0");
 
         //update database
@@ -748,7 +748,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s8.getText()) - convert.fromString(a8.getText());
-        s8.setText(convert.toString(tmp));
+        s8.setText(Integer.toString((int)tmp));
         a8.setText("0");
 
         //update database
@@ -776,7 +776,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s9.getText()) - convert.fromString(a9.getText());
-        s9.setText(convert.toString(tmp));
+        s9.setText(Integer.toString((int)tmp));
         a9.setText("0");
 
         //update database
@@ -804,7 +804,7 @@ public class DisplayController implements Initializable {
         balance.setText(convert.toString(money));
 
         double tmp = convert.fromString(s10.getText()) - convert.fromString(a10.getText());
-        s10.setText(convert.toString(tmp));
+        s10.setText(Integer.toString((int)tmp));
         a10.setText("0");
 
         //update database
