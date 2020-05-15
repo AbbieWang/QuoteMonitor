@@ -73,10 +73,8 @@ public class DisplayController implements Initializable {
         data = new Data();
         series = new XYChart.Series();
         lineChart.setTitle("Hourly Stock Price Changes");
-       // lineChart.getData().add(series);
         y_axis = new double[30];
         x_axis = new String[30];
-
         try {
             balance.setText(convertToString(db.getBalance()));
         } catch (Exception e) {
@@ -91,7 +89,6 @@ public class DisplayController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         try {
               updateApp();
@@ -137,7 +134,7 @@ public class DisplayController implements Initializable {
         p1.setText(price);
         String change = data.getChangesPercentage(ticker);
         stock1.setText(stockName + " ($"+ ticker +")                 " + change + "%");
-        
+
     }
     @FXML
     public void updateStock2(String stockName, String ticker) throws Exception{
@@ -572,6 +569,7 @@ public class DisplayController implements Initializable {
         yAxis.setLowerBound(findMin(ticker)-5);
         yAxis.setUpperBound(findMax(ticker)+5);
         yAxis.setTickUnit(2);
+        lineChart.setLegendVisible(false);
     }
 
     public void setCurrentGraph1() throws Exception {
