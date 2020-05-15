@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -34,11 +16,11 @@
             <Font name="System Bold" size="21.0" />
           </font>
         </Label>
-            <ScrollPane layoutX="427.0" layoutY="83.0" prefHeight="205.0" prefWidth="355.0">
+            <ScrollPane layoutX="427.0" layoutY="90.0" prefHeight="248.0" prefWidth="355.0">
                <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="335.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="376.0" prefWidth="335.0">
                      <children>
-                        <Accordion prefHeight="205.0" prefWidth="336.0">
+                        <Accordion prefHeight="373.0" prefWidth="335.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <panes>
                             <TitledPane fx:id="stock1" animated="false" onMouseClicked="#setCurrentGraph1" style="-fx-background-color: #1b1b1b;" text="Stock1 ($TCKR)                            +2.33%">
                               <content>
@@ -284,6 +266,261 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="p5" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="stock6" animated="false" layoutX="10.0" layoutY="138.0" onMouseClicked="#setCurrentGraph6" text="Stock6 ($TCKR)                            -2.12%">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks6" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="293.0" layoutY="15.0" mnemonicParsing="false" onAction="#sellStocks6" prefHeight="23.0" prefWidth="41.0" text="Sell">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="167.0" layoutY="20.0" text="Amount:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutY="20.0" text="Shares:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="s6" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="a6" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="71.0" layoutY="20.0" text="Price:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="p6" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="stock7" animated="false" layoutX="10.0" layoutY="170.0" onMouseClicked="#setCurrentGraph7" text="Stock7 ($TCKR)                            -2.12%">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks7" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="293.0" layoutY="15.0" mnemonicParsing="false" onAction="#sellStocks7" prefHeight="23.0" prefWidth="41.0" text="Sell">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="167.0" layoutY="20.0" text="Amount:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutY="20.0" text="Shares:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="s7" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="a7" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="71.0" layoutY="20.0" text="Price:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="p7" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="stock8" animated="false" layoutX="10.0" layoutY="170.0" onMouseClicked="#setCurrentGraph8" text="Stock8 ($TCKR)                            -2.12%">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks8" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="293.0" layoutY="15.0" mnemonicParsing="false" onAction="#sellStocks8" prefHeight="23.0" prefWidth="41.0" text="Sell">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="167.0" layoutY="20.0" text="Amount:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutY="20.0" text="Shares:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="s8" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="a8" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="71.0" layoutY="20.0" text="Price:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="p8" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="stock9" animated="false" layoutX="10.0" layoutY="234.0" onMouseClicked="#setCurrentGraph9" text="Stock9 ($TCKR)                            -2.12%">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks9" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="293.0" layoutY="15.0" mnemonicParsing="false" onAction="#sellStocks9" prefHeight="23.0" prefWidth="41.0" text="Sell">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="167.0" layoutY="20.0" text="Amount:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutY="20.0" text="Shares:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="s9" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="a9" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="71.0" layoutY="20.0" text="Price:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="p9" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane fx:id="stock10" animated="false" layoutX="10.0" layoutY="267.0" onMouseClicked="#setCurrentGraph10" text="Stock10 ($TCKR)                            -2.12%">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button layoutX="244.0" layoutY="15.0" mnemonicParsing="false" onAction="#purchaseStocks10" prefHeight="23.0" prefWidth="41.0" text="Buy">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
+                                          <Button layoutX="293.0" layoutY="15.0" mnemonicParsing="false" onAction="#sellStocks10" prefHeight="23.0" prefWidth="41.0" text="Sell">
+                                             <font>
+                                                <Font size="8.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="167.0" layoutY="20.0" text="Amount:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutY="20.0" text="Shares:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="s10" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="a10" alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" promptText="0">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="71.0" layoutY="20.0" text="Price:">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="p10" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="97.0" layoutY="15.0" prefHeight="23.0" prefWidth="59.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>

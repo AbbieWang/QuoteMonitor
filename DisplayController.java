@@ -25,13 +25,13 @@ import java.util.regex.Pattern;
 public class DisplayController implements Initializable {
 
     @FXML
-    private TitledPane stock1,stock2,stock3,stock4,stock5;
+    private TitledPane stock1,stock2,stock3,stock4,stock5, stock6, stock7, stock8, stock9, stock10;
     @FXML
-    private TextField p1,p2,p3,p4,p5;//price fields
+    private TextField p1,p2,p3,p4,p5, p6, p7, p8, p9, p10;//price fields
     @FXML
-    private TextField s1,s2,s3,s4,s5;//shares fields
+    private TextField s1,s2,s3,s4,s5, s6, s7, s8, s9, s10;//shares fields
     @FXML
-    private TextField a1,a2,a3,a4,a5;//amount fields
+    private TextField a1,a2,a3,a4,a5, a6, a7, a8, a9, a10;//amount fields
 
     @FXML
     private TextField portfolioVal, balance;
@@ -86,6 +86,11 @@ public class DisplayController implements Initializable {
             s3.setText(""+db.getShares("AMZN"));
             s4.setText(""+db.getShares("MSFT"));
             s5.setText(""+db.getShares("TSLA"));
+            s6.setText(""+db.getShares("FB"));
+            s7.setText(""+db.getShares("JPM"));
+            s8.setText(""+db.getShares("V"));
+            s9.setText(""+db.getShares("NFLX"));
+            s10.setText(""+db.getShares("ZM"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,7 +139,7 @@ public class DisplayController implements Initializable {
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p1.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock1.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        stock1.setText(stockName + " ($"+ ticker +")             " + change + "%");
 
     }
     @FXML
@@ -143,7 +148,7 @@ public class DisplayController implements Initializable {
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p2.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock2.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        stock2.setText(stockName + "($"+ ticker +")                " + change + "%");
    
     }
 
@@ -153,7 +158,7 @@ public class DisplayController implements Initializable {
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p3.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock3.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        stock3.setText(stockName + " ($"+ ticker +")               " + change + "%");
     }
 
     @FXML
@@ -162,18 +167,61 @@ public class DisplayController implements Initializable {
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
         p4.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock4.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        stock4.setText(stockName + " ($"+ ticker +")               " + change + "%");
     }
 
     @FXML
     public void updateStock5(String stockName, String ticker) throws Exception{
         DecimalFormat df = new DecimalFormat("#.##");
         String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
-
-
         p5.setText(price);
         String change = data.getChangesPercentage(ticker);
-        stock5.setText(stockName + " ($"+ ticker +")                 " + change + "%");
+        stock5.setText(stockName + "($"+ ticker +")               " + change + "%");
+    }
+
+    @FXML
+    public void updateStock6(String stockName, String ticker) throws Exception{
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+        p6.setText(price);
+        String change = data.getChangesPercentage(ticker);
+        stock6.setText(stockName + "($"+ ticker +")                    " + change + "%");
+    }
+
+    @FXML
+    public void updateStock7(String stockName, String ticker) throws Exception{
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+        p7.setText(price);
+        String change = data.getChangesPercentage(ticker);
+        stock7.setText(stockName + " ($"+ ticker +")             " + change + "%");
+    }
+
+    @FXML
+    public void updateStock8(String stockName, String ticker) throws Exception{
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+        p8.setText(price);
+        String change = data.getChangesPercentage(ticker);
+        stock8.setText(stockName + " ($"+ ticker +")                      " + change + "%");
+    }
+
+    @FXML
+    public void updateStock9(String stockName, String ticker) throws Exception{
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+        p9.setText(price);
+        String change = data.getChangesPercentage(ticker);
+        stock9.setText(stockName + "  ($"+ ticker +")               " + change + "%");
+    }
+
+    @FXML
+    public void updateStock10(String stockName, String ticker) throws Exception{
+        DecimalFormat df = new DecimalFormat("#.##");
+        String price = convertToString(Double.valueOf(df.format(data.getRealTimeData(ticker))));
+        p10.setText(price);
+        String change = data.getChangesPercentage(ticker);
+        stock10.setText(stockName + " ($"+ ticker +")                 " + change + "%");
     }
 
     //This method will have to change later to get portfolio value out of database to keep track
@@ -182,7 +230,6 @@ public class DisplayController implements Initializable {
         double val = calculatePortfolio();
         String pVal = val + "";
         portfolioVal.setText(pVal);
-
     }
 
     @FXML
@@ -193,7 +240,12 @@ public class DisplayController implements Initializable {
                 + (convert.fromString(s2.getText()) * convert.fromString(p2.getText()))
                 + (convert.fromString(s3.getText()) * convert.fromString(p3.getText()))
                 + (convert.fromString(s4.getText()) * convert.fromString(p4.getText()))
-                + (convert.fromString(s5.getText()) * convert.fromString(p5.getText()));
+                + (convert.fromString(s5.getText()) * convert.fromString(p5.getText()))
+                + (convert.fromString(s6.getText()) * convert.fromString(p6.getText()))
+                + (convert.fromString(s7.getText()) * convert.fromString(p7.getText()))
+                + (convert.fromString(s8.getText()) * convert.fromString(p8.getText()))
+                + (convert.fromString(s9.getText()) * convert.fromString(p9.getText()))
+                + (convert.fromString(s10.getText()) * convert.fromString(p10.getText()));
 
         total = total + convert.fromString(balance.getText());
         DecimalFormat df = new DecimalFormat("#.##");
@@ -202,11 +254,16 @@ public class DisplayController implements Initializable {
     }
 
     public void updateApp() throws Exception {
-        updateStock1("Alphabet Inc.", "GOOGL");
+        updateStock1("Alphabet Inc. ", "GOOGL");
         updateStock2("Apple Inc.        ", "AAPL");
         updateStock3("Amazon          ", "AMZN");
         updateStock4("Microsoft         ", "MSFT");
         updateStock5("Tesla                ", "TSLA");
+        updateStock6("Facebook Inc.  ", "FB");
+        updateStock7("JPMorgan Chase", "JPM");
+        updateStock8("Visa Inc.          ", "V");
+        updateStock9("Netflix Inc.      ", "NFLX");
+        updateStock10("Zoom Video Inc.", "ZM");
         fetchPortfolio();
     }
     //missing case for input not being a valid number
@@ -343,6 +400,136 @@ public class DisplayController implements Initializable {
         //update database
         int share = (int) tmp;
         db.updateSharesDatabase("TSLA",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void purchaseStocks6() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a6.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a6.getText()) * convert.fromString(p6.getText()) > money) {
+            displayErrorMessage("Insufficient Funds!");
+            return;
+        }
+        money = money - (convert.fromString(a6.getText()) * convert.fromString(p6.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a6.getText()) + convert.fromString(s6.getText());
+        s6.setText(convert.toString(tmp));
+        a6.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("FB",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void purchaseStocks7() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a7.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a7.getText()) * convert.fromString(p7.getText()) > money) {
+            displayErrorMessage("Insufficient Funds!");
+            return;
+        }
+        money = money - (convert.fromString(a7.getText()) * convert.fromString(p7.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a7.getText()) + convert.fromString(s7.getText());
+        s7.setText(convert.toString(tmp));
+        a7.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("JPM",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void purchaseStocks8() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a8.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a8.getText()) * convert.fromString(p8.getText()) > money) {
+            displayErrorMessage("Insufficient Funds!");
+            return;
+        }
+        money = money - (convert.fromString(a8.getText()) * convert.fromString(p8.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a8.getText()) + convert.fromString(s8.getText());
+        s8.setText(convert.toString(tmp));
+        a8.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("V",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void purchaseStocks9() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a9.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a9.getText()) * convert.fromString(p9.getText()) > money) {
+            displayErrorMessage("Insufficient Funds!");
+            return;
+        }
+        money = money - (convert.fromString(a9.getText()) * convert.fromString(p9.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a9.getText()) + convert.fromString(s9.getText());
+        s9.setText(convert.toString(tmp));
+        a9.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("NFLX",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void purchaseStocks10() throws Exception {
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a10.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a10.getText()) * convert.fromString(p10.getText()) > money) {
+            displayErrorMessage("Insufficient Funds!");
+            return;
+        }
+        money = money - (convert.fromString(a10.getText()) * convert.fromString(p10.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(a10.getText()) + convert.fromString(s10.getText());
+        s10.setText(convert.toString(tmp));
+        a10.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("ZM",share);
         db.updateBalanceDatabase(money);
     }
     public void sellStocks1() throws Exception {
@@ -485,6 +672,146 @@ public class DisplayController implements Initializable {
         db.updateSharesDatabase("TSLA",share);
         db.updateBalanceDatabase(money);
     }
+    public void sellStocks6() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a6.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a6.getText())  > convert.fromString(s6.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a6.getText()) * convert.fromString(p6.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s6.getText()) - convert.fromString(a6.getText());
+        s6.setText(convert.toString(tmp));
+        a6.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("FB",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void sellStocks7() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a7.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a7.getText())  > convert.fromString(s7.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a7.getText()) * convert.fromString(p7.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s7.getText()) - convert.fromString(a7.getText());
+        s7.setText(convert.toString(tmp));
+        a7.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("JPM",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void sellStocks8() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a8.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a8.getText())  > convert.fromString(s8.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a8.getText()) * convert.fromString(p8.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s8.getText()) - convert.fromString(a8.getText());
+        s8.setText(convert.toString(tmp));
+        a8.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("V",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void sellStocks9() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a9.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a9.getText())  > convert.fromString(s9.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a9.getText()) * convert.fromString(p9.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s9.getText()) - convert.fromString(a9.getText());
+        s9.setText(convert.toString(tmp));
+        a9.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("NFLX",share);
+        db.updateBalanceDatabase(money);
+    }
+    public void sellStocks10() throws Exception {
+        //make sure "amount" is a valid input
+        if (!Pattern.matches("^\\d*[1-9]\\d*$", a10.getText() )) {
+            displayErrorMessage("Please Enter a Positive Integer");
+            return;
+        }
+        updateApp();
+        DoubleStringConverter convert = new DoubleStringConverter();
+        double money = convert.fromString(balance.getText());
+        if (convert.fromString(a10.getText())  > convert.fromString(s10.getText())) {
+            displayErrorMessage("You don't own that many stocks!");
+            return;
+        }
+
+        money = money + (convert.fromString(a10.getText()) * convert.fromString(p10.getText()));
+        DecimalFormat df = new DecimalFormat("#.##");
+        money = Double.valueOf(df.format(money));
+        balance.setText(convert.toString(money));
+
+        double tmp = convert.fromString(s10.getText()) - convert.fromString(a10.getText());
+        s10.setText(convert.toString(tmp));
+        a10.setText("0");
+
+        //update database
+        int share = (int) tmp;
+        db.updateSharesDatabase("ZM",share);
+        db.updateBalanceDatabase(money);
+    }
 
     public void displayErrorMessage(String msg) {
         statusMessage.setOpacity(1.0);
@@ -591,6 +918,31 @@ public class DisplayController implements Initializable {
     }
     public void setCurrentGraph5() throws Exception {
         currentGraph = "TSLA";
+        updateGraph();
+
+    }
+    public void setCurrentGraph6() throws Exception {
+        currentGraph = "FB";
+        updateGraph();
+
+    }
+    public void setCurrentGraph7() throws Exception {
+        currentGraph = "JPM";
+        updateGraph();
+
+    }
+    public void setCurrentGraph8() throws Exception {
+        currentGraph = "V";
+        updateGraph();
+
+    }
+    public void setCurrentGraph9() throws Exception {
+        currentGraph = "NFLX";
+        updateGraph();
+
+    }
+    public void setCurrentGraph10() throws Exception {
+        currentGraph = "ZM";
         updateGraph();
 
     }
