@@ -1,7 +1,0 @@
-The quote monitor project is a Java GUI application that consists of two major parts. 
-
-The first part is the real-time stock price tracker. We will select 10-20 publicly traded companies and utilize the dataset API to display their real-time data. For each company, besides the real-time stock price data, we also plan to display a diagram of changes in the stock prices for the last hour or a reasonable time interval. Additionally, for each company, we also plan to display a chart of stock returns from the given day, given month, and YTD.
-
-The second part of our project is a portfolio gain or loss tracker interactive with users. This part utilizes data sources from part one. A user can select a portfolio based on our company list from the first part. Then once their portfolios are created, we keep track of their portfolio performance in two ways: 1) We will also have a portfolio diagram of gains and losses for the last hour or a reasonable time interval. 2) We will display a chart of gains/losses from the given day, given month, and YTD. Additionally, we would like to create a buying/selling option for the portfolio created by users. Thus, portfolio investors are allowed to switch their portfolio choices and keep track of gains and losses accordingly.
-
-Essentailly, this quote monitor is a tool to track real-time stock prices, create portfolios, and evaluate portfolio performances.
