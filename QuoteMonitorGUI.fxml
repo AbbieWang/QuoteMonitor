@@ -57,7 +57,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s1" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s1" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -108,7 +108,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s2" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s2" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -159,7 +159,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s3" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s3" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -210,7 +210,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s4" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s4" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -261,7 +261,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s5" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s5" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -312,7 +312,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s6" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s6" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -363,7 +363,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s7" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s7" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -414,7 +414,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s8" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s8" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -465,7 +465,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s9" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s9" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
@@ -516,7 +516,7 @@
                                                 <Font size="11.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="s10" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
+                                          <TextField fx:id="s10" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="15.0" prefHeight="23.0" prefWidth="29.0" text="0">
                                              <font>
                                                 <Font size="11.0" />
                                              </font>
